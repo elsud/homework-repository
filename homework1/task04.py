@@ -14,7 +14,8 @@ def check_sum_of_four(
     list_a: List[int], list_b: List[int], list_c: List[int], list_d: List[int]
 ) -> int:
     """This function count number of tuples (i, j, k, l) there are such that
-    a[i] + b[j] + c[k] + d[l] equal zero"""
+    a[i] + b[j] + c[k] + d[l] equal zero
+    A, B, C, D must have same length of N where 0 ≤ N ≤ 1000"""
     count_tuples = 0
     sums = {}
     for a_value in list_a:

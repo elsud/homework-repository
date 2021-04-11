@@ -18,7 +18,8 @@ def _get_fib_seq(end: int) -> Sequence[int]:
 
 
 def check_fib(data: Sequence[int]) -> bool:
-    """Check that sequence is a part of fib sequence"""
+    """Check that sequence is a part of fib sequence.
+    Sequence must contain >= 0 integers inside"""
     max_seq_value = data[-1]
     if max_seq_value < 0:
         return False
