@@ -18,8 +18,3 @@ def test_positive_nums_less_than_k():
 def test_positive_nums_more_than_k():
     """Test with length of list equal to 0"""
     assert find_maximal_subarray_sum([1, 2, 5, 50], 3) == 57
-
-
-test_negative_nums_only()
-test_positive_nums_less_than_k()
-test_positive_nums_more_than_k()
