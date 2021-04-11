@@ -2,9 +2,10 @@
 """Test homework1/task04.py
 """
 
-from homework1.task04 import check_sum_of_four
 from random import randint
 from time import time
+
+from homework1.task04 import check_sum_of_four
 
 
 def test_correctness_with_no_values():
