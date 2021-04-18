@@ -28,7 +28,7 @@ def find_max_and_min(file_name: str) -> Tuple[int or None, int or None]:
     with open(file_name) as fin:
         try:
             min_value = max_value = int(next(fin).strip())
-        except ValueError or StopIteration:
+        except (ValueError, StopIteration):
             return None, None
 
         for line in fin:
