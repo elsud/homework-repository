@@ -10,16 +10,26 @@ Examples:
     result = 16
 """
 from typing import List
+from itertools import chain, islice
 
 
-def find_maximal_subarray_sum(nums: List[int], k: int) -> int:
+def find_maximal_subarray_sum(nums: List[int], k: int) -> int or None:
     """This function return sum of sub-array with length less equal to "k",
-    with maximum sum. Nums must have one number at least"""
-    assert len(nums) > 0
-    nums_positive_only = [element for element in nums if element > 0]
-    if len(nums_positive_only) == 0:
-        return max(nums)
-    if len(nums_positive_only) < k:
-        return sum(nums_positive_only)
-    nums_positive_only.sort()
-    return sum(nums_positive_only[-k:])
+    with maximum sum. If list hasn't numbers then return None"""
+    if not nums:
+        return None
+
+    max_sum = float('-inf')
+    for sub_arr_len in range(1, k + 1):
+        slices = chain(
+            (zip(range(0, len(nums) - sub_arr_len),
+                 range(sub_arr_len, len(nums)))),
+            ((len(nums) - sub_arr_len, None),)
+        )
+        for start_slice, end_slice in slices:
+            sub_arr = islice(nums, start_slice, end_slice)
+            new_sum = sum(sub_arr)
+            if new_sum > max_sum:
+                max_sum = new_sum
+    return max_sum
+

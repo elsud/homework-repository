@@ -17,7 +17,7 @@ with open("some_file.txt") as fi:
 from typing import Tuple
 
 
-def find_maximum_and_minimum(file_name: str) -> Tuple[int, int]:
+def find_maximum_and_minimum(file_name: str) -> Tuple[int or None, int or None]:
     """This function take file path and return a tuple with max and
     min values. File must exists and contains line-delimited integers.
 
@@ -26,7 +26,11 @@ def find_maximum_and_minimum(file_name: str) -> Tuple[int, int]:
     :return: tuple(min_value, max_value)
     """
     with open(file_name) as fin:
-        min_value = max_value = int(next(fin).strip())
+        try:
+            min_value = max_value = int(next(fin).strip())
+        except ValueError:
+            return None, None
+
         for line in fin:
             line_value = int(line.strip())
             if line_value > max_value:

@@ -4,6 +4,7 @@
 
 
 from homework1.task02 import check_fib
+import sys
 
 
 def test_positive_special_cases():
@@ -34,6 +35,7 @@ def test_negative_case_positive_seq():
     assert not check_fib([34, 54, 89])
     assert not check_fib([1, 1, 1, 1])
     assert not check_fib([0, 1, 1, 1])
+    assert not check_fib((1, 1, 1, 1, sys.maxsize))
 
 
 def test_negative_case_negative_seq():
