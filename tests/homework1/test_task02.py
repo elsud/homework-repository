@@ -3,8 +3,9 @@
 """
 
 
-from homework1.task02 import check_fib
 import sys
+
+from homework1.task02 import check_fib
 
 
 def test_positive_special_cases():

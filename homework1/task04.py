@@ -7,13 +7,12 @@ Given four lists A, B, C, D of integer values,
 
 We guarantee, that all A, B, C, D have same length of N where 0 ≤ N ≤ 1000.
 """
-from typing import List
 from itertools import product
+from typing import List
 
 
 def check_sum_of_four(
-        list_a: List[int], list_b: List[int], list_c: List[int],
-        list_d: List[int]
+    list_a: List[int], list_b: List[int], list_c: List[int], list_d: List[int]
 ) -> int:
     """This function count number of tuples (i, j, k, l) there are such that
     a[i] + b[j] + c[k] + d[l] equal zero
