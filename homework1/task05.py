@@ -22,11 +22,8 @@ def find_maximal_subarray_sum(nums: List[int], k: int) -> int or None:
     max_sum = float("-inf")
     for sub_arr_len in range(1, k + 1):
         # because black ruin max string len
-        slices_generator = zip(
-            range(0, len(nums) - sub_arr_len), range(sub_arr_len, len(nums))
-        )
         slices = chain(
-            slices_generator,
+            zip(range(0, len(nums) - sub_arr_len), range(sub_arr_len, len(nums))),
             ((len(nums) - sub_arr_len, None),),
         )
         for start_slice, end_slice in slices:
