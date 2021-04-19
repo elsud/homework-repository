@@ -1,4 +1,4 @@
-import homework2.task1 as t1
+from homework2 import task1 as t1
 
 
 def create_text_file(file_path, text):
