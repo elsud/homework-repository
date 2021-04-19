@@ -19,4 +19,4 @@ def test_positive_nums_only():
     """Test with positive nums only"""
     assert find_maximal_subarray_sum([1, 2, 5, 50], 3) == 57
     assert find_maximal_subarray_sum([1, 2, 1, 2, 1], 2) == 3
-    assert find_maximal_subarray_sum([1, 2, 1, 2, 1, 3], 2) == 4
+    assert find_maximal_subarray_sum([1, 2, 1, 2, 1, 4], 2) == 5
