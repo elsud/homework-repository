@@ -2,45 +2,56 @@
 """Test homework1/task02.py
 """
 
-
 import sys
+
+import pytest
 
 from homework1.task02 import check_fib
 
 
-def test_positive_special_cases():
-    """Testing that actual fib sequence with the special values return True"""
-    assert check_fib([0])
-    assert check_fib([1])
-    assert check_fib([0, 1])
-    assert check_fib([1, 1])
+@pytest.mark.parametrize("one_elem_seq", [[0], [1], [21]])
+def test_check_fib_positive_one_elem_cases(one_elem_seq):
+    assert check_fib(one_elem_seq)
 
 
-def test_positive_case_1_member():
-    """Testing that actual fib sequence with 1 member return True"""
-    assert check_fib([21])
+@pytest.mark.parametrize("one_elem_seq", [[-100], [-1], [4]])
+def test_check_fib_negative_one_elem_cases(one_elem_seq):
+    assert not check_fib(one_elem_seq)
 
 
-def test_positive_case_2_members():
-    """Testing that actual fib sequence with 2 member return True"""
-    assert check_fib([21, 34])
+@pytest.mark.parametrize("two_elem_seq", [[0, 1], [1, 1], [13, 21]])
+def test_check_fib_positive_two_elem_cases(two_elem_seq):
+    assert check_fib(two_elem_seq)
 
 
-def test_positive_case_many_members():
-    """Testing that actual fib sequence with many member return True"""
-    assert check_fib([34, 55, 89, 144, 233])
+@pytest.mark.parametrize(
+    "two_elem_seq",
+    [
+        [-1, -1],
+        [0, 0],
+        [1, 3],
+        [14, 21],
+        [13, 22],
+    ],
+)
+def test_check_fib_negative_two_elem_cases(two_elem_seq):
+    assert not check_fib(two_elem_seq)
 
 
-def test_negative_case_positive_seq():
-    """Testing that not fib seq with positive values return False"""
-    assert not check_fib([34, 54, 89])
-    assert not check_fib([1, 1, 1, 1])
-    assert not check_fib([0, 1, 1, 1])
-    assert not check_fib((1, 1, 1, 1, sys.maxsize))
+@pytest.mark.parametrize("many_elem_seq", [[0, 1, 1, 2], [2, 3, 5, 8, 13]])
+def test_check_fib_positive_many_elem_cases(many_elem_seq):
+    assert check_fib(many_elem_seq)
 
 
-def test_negative_case_negative_seq():
-    """Testing that not fib seq with negative and positive values give False"""
-    assert not check_fib([34, 54, -89])
-    assert not check_fib([-1, 0, 1])
-    assert not check_fib([0, 0])
+@pytest.mark.parametrize(
+    "many_elem_seq",
+    [
+        [0, 1, 1, 3],
+        [1, 1, 1, 2],
+        [2, 3, 5, 9, 13],
+        [-1, 0, 1, 2],
+        [1, 1, 1, 1, sys.maxsize],
+    ],
+)
+def test_check_fib_negative_many_elem_cases(many_elem_seq):
+    assert not check_fib(many_elem_seq)
