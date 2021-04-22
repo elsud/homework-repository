@@ -11,11 +11,11 @@ from typing import Generator, Sequence
 
 def _get_fib_seq_generator(start: int) -> Generator:
     """This generator yields the members of fib sequence from start number"""
-    fib_seq = [0, 1]
+    fib_lower, fib_bigger = 0, 1
     while True:
-        if fib_seq[0] >= start:
-            yield fib_seq[0]
-        fib_seq[0], fib_seq[1] = fib_seq[1], sum(fib_seq)
+        if fib_lower >= start:
+            yield fib_lower
+        fib_lower, fib_bigger = fib_bigger, fib_lower + fib_bigger
 
 
 def check_fib(data: Sequence[int]) -> bool:
