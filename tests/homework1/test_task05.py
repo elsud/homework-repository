@@ -19,3 +19,7 @@ def test_find_maximal_subarray_sum_positive_nums_only_3_val():
 
 def test_find_maximal_subarray_sum_positive_nums_only_2_val():
     assert find_maximal_subarray_sum([1, 2, 1, 2, 1], 2) == 3
+
+
+def test_find_maximal_subarray_sum_empty_list():
+    assert find_maximal_subarray_sum([], 2) is None
