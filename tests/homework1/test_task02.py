@@ -3,10 +3,20 @@
 """
 
 import sys
+from itertools import islice
 
 import pytest
 
-from homework1.task02 import check_fib
+from homework1.task02 import _get_fib_seq_generator, check_fib
+
+
+@pytest.mark.parametrize(
+    "start, fib_seq",
+    [(0, [0, 1, 1, 2, 3]), (4, [5, 8, 13, 21, 34]), (5, [5, 8, 13, 21, 34])],
+)
+def test_get_fib_seq_generator(start, fib_seq):
+    res = list(islice(_get_fib_seq_generator(start), 5))
+    assert res == fib_seq
 
 
 @pytest.mark.parametrize("one_elem_seq", [[0], [1], [21]])
