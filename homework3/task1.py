@@ -2,9 +2,10 @@
 output value and gives out cached value up to n times only."""
 
 from functools import wraps
+from typing import Callable
 
 
-def cache(times=1):
+def cache(times: int = 1) -> Callable:
     """Caching function output and giving out it up to given times.
     It's dict saves output value and quantity of times decorator should
     return this value instead of invoke function."""
