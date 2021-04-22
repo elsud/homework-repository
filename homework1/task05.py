@@ -9,7 +9,6 @@ Examples:
     nums = [1, 3, -1, -3, 5, 3, 6, 7], k = 3
     result = 16
 """
-from itertools import chain, islice
 from typing import List
 
 
@@ -22,7 +21,7 @@ def find_maximal_subarray_sum(nums: List[int], k: int) -> int or None:
     max_sum = float("-inf")
     for sub_arr_len in range(1, k + 1):
         for start_pos in range(len(nums) - sub_arr_len + 1):
-            new_sum = sum(nums[start_pos:start_pos + sub_arr_len])
+            new_sum = sum(nums[start_pos : start_pos + sub_arr_len])
             if new_sum > max_sum:
                 max_sum = new_sum
     return max_sum
