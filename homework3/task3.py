@@ -3,6 +3,8 @@ Example of usage:
 positive_even = Filter(lambda a: a % 2 == 0, lambda a: a > 0, lambda a: isinstance(a, int))
 positive_even.apply(range(100)) should return only even numbers from 0 to 99"""
 
+from functools import partial
+
 
 class Filter:
     """
@@ -23,12 +25,15 @@ def make_filter(**kwargs):
     """
     filter_funcs = []
 
+    def keyword_filter_func(data, key, value):
+        return data.get(key) == value
+
     for key, value in kwargs.items():
+        filter_func_with_key_and_value = partial(
+            keyword_filter_func, key=key, value=value
+        )
+        filter_funcs.append(filter_func_with_key_and_value)
 
-        def keyword_filter_func(data, _inner_key=key, _inner_value=value):
-            return data.get(_inner_key) == _inner_value
-
-        filter_funcs.append(keyword_filter_func)
     return Filter(filter_funcs)
 
 
