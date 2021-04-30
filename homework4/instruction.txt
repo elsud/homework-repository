@@ -1,0 +1,21 @@
+Instruction how to run doctests with pytest
+
+1. Install Python 3.8 (https://www.python.org/downloads/)
+2. Install pytest `pip install pytest`
+3. Clone the repository <path your repository>
+4. Checkout branch <your branch>
+5. Create a Python file and write needable function
+6. Write a doctest to the function inside of its docstring.
+    Doctest must look like interactive Python session where you invoke the function
+    and view the result of its execution in terminal.
+    You can read more about doctests, for example about usage of option flags
+    (https://docs.python.org/3/library/doctest.html)
+7. Open terminal and invoke doctest by using:
+        pytest --doctest-modules
+    on the command line.
+    Yoy can point at the path to file after "pytest"
+8. Also you can put some settings into a pytest.ini file:
+        # content of py.ini
+        [pytest]
+        addopts = --doctests-modules
+    Now doctests will run without parameters after command "pytest'
