@@ -24,7 +24,7 @@ def get_value_from_file(file_name):
             for line in fin:
                 yield int(line.strip())
         except ValueError:
-            return None
+            return
 
 
 def find_max_and_min(file_name: str) -> Tuple[int or None, int or None]:
@@ -35,10 +35,10 @@ def find_max_and_min(file_name: str) -> Tuple[int or None, int or None]:
      integers.
     :return: tuple(min_value, max_value)
     """
-    min_value, max_value = float('inf'), float('-inf')
+    min_value, max_value = float("inf"), float("-inf")
     for line_value in get_value_from_file(file_name):
         if line_value > max_value:
             max_value = line_value
         if line_value < min_value:
             min_value = line_value
-    return (min_value, max_value) if min_value < float('inf') else (None, None)
+    return (min_value, max_value) if min_value < float("inf") else (None, None)
