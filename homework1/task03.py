@@ -17,6 +17,16 @@ with open("some_file.txt") as fi:
 from typing import Tuple
 
 
+def get_value_from_file(file_name):
+    """Yield line's value from file"""
+    with open(file_name) as fin:
+        try:
+            for line in fin:
+                yield int(line.strip())
+        except ValueError:
+            return None
+
+
 def find_max_and_min(file_name: str) -> Tuple[int or None, int or None]:
     """This function take file path and return a tuple with max and
     min values. File must exists and contains line-delimited integers.
@@ -25,16 +35,10 @@ def find_max_and_min(file_name: str) -> Tuple[int or None, int or None]:
      integers.
     :return: tuple(min_value, max_value)
     """
-    with open(file_name) as fin:
-        try:
-            min_value = max_value = int(next(fin).strip())
-        except (ValueError, StopIteration):
-            return None, None
-
-        for line in fin:
-            line_value = int(line.strip())
-            if line_value > max_value:
-                max_value = line_value
-            elif line_value < min_value:
-                min_value = line_value
-    return min_value, max_value
+    min_value, max_value = float('inf'), float('-inf')
+    for line_value in get_value_from_file(file_name):
+        if line_value > max_value:
+            max_value = line_value
+        if line_value < min_value:
+            min_value = line_value
+    return (min_value, max_value) if min_value < float('inf') else (None, None)
