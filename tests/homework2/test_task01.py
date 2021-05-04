@@ -1,7 +1,7 @@
 """Test for task01 - Text work"""
 import homework2.task01
 
-path_data = "./homework2/data.txt"
+path_data = "./tests/homework2/data.txt"
 
 
 def test_most_unique_longest_words():
