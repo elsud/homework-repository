@@ -1,32 +1,31 @@
 """Test for task02_var2 - Most&least common"""
-import pytest
-
 from homework2.task02_var2 import major_and_minor_elem
 
 
-def test_correct_input_for_counting():
+def test_correct_input_for_counting(monkeypatch):
     """Testing right input"""
-    assert major_and_minor_elem([1, 1, 2]) == 1, 2
+    num_input = [1, 1, 1, 2]
+    monkeypatch.setattr("homework2.task02_var2.input_list", lambda: num_input)
+    assert major_and_minor_elem(num_input) == (1, 2)
 
 
-@pytest.mark.parametrize(
-    "my_input, output",
-    [
-        (
-            [1, 1, 1, 2, 2, 3],
-            input(
-                "There is not element, which fills list more than n//2. "
-                "Please, input right list "
-            ).split(),
-        ),
-        (
-            [1, 1, 2, 3],
-            input(
-                "More than 1 element is the least common. Please, input right list "
-            ).split(),
-        ),
-    ],
-)
-def test_incorrect_input_for_counting(my_input, output):
+def test_most_common_num_less_than_n_del_2(monkeypatch):
     """Testing wrong input"""
-    assert major_and_minor_elem(my_input) == output
+    num_input_wrong = [1, 1, 1, 2, 2, 3]
+    monkeypatch.setattr("homework2.task02_var2.input_list", lambda: num_input_wrong)
+    num_input_right = [1, 1, 1, 2]
+    monkeypatch.setattr(
+        "homework2.task02_var2.input_list_if_wrong", lambda: num_input_right
+    )
+    assert major_and_minor_elem(num_input_wrong) == (1, 2)
+
+
+def test_2_less_common_elements(monkeypatch):
+    """Testing wrong input"""
+    num_input = [1, 1, 1, 2, 3]
+    monkeypatch.setattr("homework2.task02_var2.input_list", lambda: num_input)
+    num_input_right = [1, 1, 2]
+    monkeypatch.setattr(
+        "homework2.task02_var2.input_list_if_wrong", lambda: num_input_right
+    )
+    assert major_and_minor_elem(num_input) == (1, 2)
