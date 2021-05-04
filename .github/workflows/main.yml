@@ -15,8 +15,7 @@ jobs:
         uses: actions/checkout@v2
       - name: Run script
         run: |
-          pip install black isort pytest
+          pip install isort pytest
           ls -la
-          black --check .
           isort --check .
           py.test tests
