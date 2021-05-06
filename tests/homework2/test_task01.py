@@ -26,7 +26,7 @@ def test_rarest_char():
 
 
 def test_count_punctuation_chars():
-    """"Testing data.txt: count punctuation"""
+    """ "Testing data.txt: count punctuation"""
     assert homework2.task01.count_punctuation_chars(path_data) == 5305
 
 
