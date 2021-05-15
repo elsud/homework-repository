@@ -14,18 +14,20 @@ def find_occurrences(tree: dict, element: Any) -> int:
     def check_dict(dct: dict) -> None:
         """Counting the number of occurrences in the dict."""
         nonlocal counter
-        for key in dct:
+        for key, value in dct.items():
+            if element == {key: value}:
+                counter += 1
+                continue
+
             if isinstance(key, tuple):
                 check_sequence(key)
-            else:
-                counter = counter if key != element else counter + 1
-        for value in dct.values():
+            counter = counter if key != element else counter + 1
+
             if isinstance(value, dict):
                 check_dict(value)
             if isinstance(value, (tuple, set, list)):
                 check_sequence(value)
-            else:
-                counter = counter if value != element else counter + 1
+            counter = counter if value != element else counter + 1
 
     def check_sequence(seq: Iterable) -> None:
         """Counting the number of occurrences in the sequence."""
@@ -33,10 +35,10 @@ def find_occurrences(tree: dict, element: Any) -> int:
         for item in seq:
             if isinstance(item, dict):
                 check_dict(item)
+                continue
             if isinstance(item, (tuple, set, list)):
                 check_sequence(item)
-            else:
-                counter = counter if item != element else counter + 1
+            counter = counter if item != element else counter + 1
 
     counter = 0
     check_dict(tree)
