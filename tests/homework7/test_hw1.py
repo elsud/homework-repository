@@ -14,7 +14,7 @@ test_tree = {
             "key1": "value1",
             "key2": "RED",
             "key3": ["a", "lot", "of", "values", {"nested_key": "RED"}],
-        }
+        },
     },
     "fourth": "RED",
 }
