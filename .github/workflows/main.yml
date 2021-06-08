@@ -15,7 +15,7 @@ jobs:
         uses: actions/checkout@v2
       - name: Run script
         run: |
-          pip install black isort pytest requests
+          pip install alembic==1.4.3 black isort pytest requests sqlalchemy==1.2.18
           ls -la
           black --check .
           isort --profile black --check .
