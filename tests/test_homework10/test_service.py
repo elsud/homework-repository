@@ -1,6 +1,7 @@
 from unittest.mock import Mock
 
 import pytest
+
 from homework10.service import ServiceCompanyHTML as C
 from homework10.service import ServiceTableHTML as T
 

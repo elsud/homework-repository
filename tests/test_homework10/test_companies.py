@@ -1,4 +1,5 @@
 import pytest
+
 from homework10.companies import Company
 
 
